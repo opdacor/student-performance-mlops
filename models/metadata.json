@@ -1,0 +1,54 @@
+{
+  "model_type": "RandomForestRegressor",
+  "target": "G3",
+  "numeric_features": [
+    "age",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "G1",
+    "G2"
+  ],
+  "categorical_features": [
+    "school",
+    "sex",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic"
+  ],
+  "n_features": 32,
+  "train_rows": 519,
+  "test_rows": 130,
+  "seed": 42,
+  "test_size": 0.2,
+  "metrics": {
+    "mae": 0.7522,
+    "r2": 0.8401
+  },
+  "trained_at": "2026-08-12T01:00:12.152054+00:00",
+  "sklearn_pipeline_steps": [
+    "preprocessor",
+    "model"
+  ]
+}
