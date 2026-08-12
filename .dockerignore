@@ -1,0 +1,24 @@
+# No enviamos nunca el historial de Git al contexto de build
+.git/
+.gitignore
+
+# Entrenamiento y datos no son necesarios para SERVIR el modelo,
+# solo para producirlo. Reducen tamaño de imagen si se excluyen.
+training/
+data/
+
+# Pruebas y documentación no viajan dentro del contenedor
+tests/
+docs/
+*.md
+
+# Basura de entornos locales
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+
+# Editor / SO
+.vscode/
+.DS_Store

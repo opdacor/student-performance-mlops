@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    image: student-performance-api:latest
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      - MODEL_PATH=/srv/models/model.joblib
+      - METADATA_PATH=/srv/models/metadata.json
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+    restart: unless-stopped
