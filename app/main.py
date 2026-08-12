@@ -49,8 +49,7 @@ app = FastAPI(
 async def validation_exception_handler(request, exc: RequestValidationError):
     # Mensaje accionable: qué campo falló y por qué, nunca un 500 genérico.
     errors = [
-        {"field": ".".join(str(p) for p in e["loc"][1:]), "issue": e["msg"]}
-        for e in exc.errors()
+        {"field": ".".join(str(p) for p in e["loc"][1:]), "issue": e["msg"]} for e in exc.errors()
     ]
     return JSONResponse(status_code=422, content={"detail": "Entrada inválida", "errors": errors})
 

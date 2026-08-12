@@ -11,7 +11,7 @@ Genera en models/:
 
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import joblib
@@ -36,15 +36,41 @@ MODELS_DIR = BASE_DIR / "models"
 # Estas listas son la fuente de verdad: se reutilizan en metadata.json
 # y de ahí las va a leer la API (GET /model/schema).
 NUMERIC_FEATURES = [
-    "age", "Medu", "Fedu", "traveltime", "studytime", "failures",
-    "famrel", "freetime", "goout", "Dalc", "Walc", "health",
-    "absences", "G1", "G2",
+    "age",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "G1",
+    "G2",
 ]
 
 CATEGORICAL_FEATURES = [
-    "school", "sex", "address", "famsize", "Pstatus", "Mjob", "Fjob",
-    "reason", "guardian", "schoolsup", "famsup", "paid", "activities",
-    "nursery", "higher", "internet", "romantic",
+    "school",
+    "sex",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic",
 ]
 
 ALL_FEATURES = NUMERIC_FEATURES + CATEGORICAL_FEATURES
@@ -117,7 +143,7 @@ def main() -> None:
         "seed": SEED,
         "test_size": TEST_SIZE,
         "metrics": {"mae": round(mae, 4), "r2": round(r2, 4)},
-        "trained_at": datetime.now(timezone.utc).isoformat(),
+        "trained_at": datetime.now(UTC).isoformat(),
         "sklearn_pipeline_steps": [name for name, _ in pipeline.steps],
     }
     metadata_path = MODELS_DIR / "metadata.json"

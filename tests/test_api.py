@@ -11,8 +11,8 @@ Cobertura exigida por la pauta:
 
 import copy
 
-
 # --- Contrato de la API -------------------------------------------------
+
 
 def test_health_returns_ok_and_model_loaded(client):
     response = client.get("/health")
@@ -34,6 +34,7 @@ def test_model_schema_exposes_features_and_metrics(client):
 
 # --- Camino feliz ---------------------------------------------------------
 
+
 def test_predict_valid_returns_200_and_range(client, valid_payload):
     response = client.post("/predict", json=valid_payload)
     assert response.status_code == 200
@@ -53,6 +54,7 @@ def test_predict_batch_valid_returns_same_count(client, valid_payload):
 
 
 # --- Validación de entradas: categorías fuera de dominio -------------------
+
 
 def test_predict_invalid_categorical_value_returns_422(client, valid_payload):
     payload = copy.deepcopy(valid_payload)
@@ -80,6 +82,7 @@ def test_predict_wrong_type_returns_422(client, valid_payload):
 
 # --- Errores esperados: campos faltantes / batch vacío ---------------------
 
+
 def test_predict_missing_required_field_returns_422(client, valid_payload):
     payload = copy.deepcopy(valid_payload)
     del payload["G2"]
@@ -96,6 +99,7 @@ def test_predict_batch_empty_list_returns_422(client):
 
 
 # --- Casos borde: límites exactos observados en el dataset ------------------
+
 
 def test_predict_edge_values_at_boundaries(client, valid_payload):
     payload = copy.deepcopy(valid_payload)

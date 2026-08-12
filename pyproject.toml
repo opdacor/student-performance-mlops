@@ -1,0 +1,26 @@
+[project]
+name = "student-performance-mlops"
+version = "1.0.0"
+description = "Servicio MLOps end-to-end: predicción de rendimiento estudiantil (G3)."
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["models/", "data/", ".venv/", "__pycache__/"]
+
+[tool.ruff.lint]
+# E, F: errores y pyflakes (lo básico: imports sin usar, variables no
+#       definidas, sintaxis dudosa).
+# I:    ordena y agrupa imports automáticamente.
+# UP:   sugiere sintaxis moderna de Python (pyupgrade).
+# B:    bugbear, atrapa errores sutiles comunes (mutable default args, etc.)
+select = ["E", "F", "I", "UP", "B"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "training"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
